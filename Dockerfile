@@ -9,7 +9,7 @@ RUN ln -s /usr/bin/python3 /usr/bin/python && \
 ENV BOSH_VERSION "6.4.0"
 ENV SPRUCE_VERION "1.27.0"
 ENV CF_CLI_VERSION "6.52.0"
-ENV YQ_VERSION "3.4.0"
+ENV YQ_VERSION "3.2.1"
 ENV GOVC_VERSION "0.23.0"
 ENV CREDHUB_VERSION "2.8.0"
 RUN curl -fL "https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${CREDHUB_VERSION}/credhub-linux-${CREDHUB_VERSION}.tgz" | tar -zx -C /usr/local/bin && \
