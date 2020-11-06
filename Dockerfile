@@ -19,7 +19,7 @@ RUN curl -fL "https://github.com/cloudfoundry-incubator/credhub-cli/releases/dow
     curl -fL "https://github.com/geofffranks/spruce/releases/download/v${SPRUCE_VERION}/spruce-linux-amd64" -o /usr/local/bin/spruce && \
     curl -fL "https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64" -o /usr/local/bin/bosh && \
     curl -fL "https://github.com/vmware/govmomi/releases/download/v${GOVC_VERSION}/govc_linux_amd64.gz" | gunzip > /usr/local/bin/govc && \
-    curl -fL "https://releases.hashicorp.com/terraform/0.13.5/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" | zcat > /usr/local/bin/terraform \
+    curl -fL "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" | zcat > /usr/local/bin/terraform && \
     chmod +x /usr/local/bin/*
 RUN mkdir /root/workspace
 ENV GOPATH '/root/workspace/'
