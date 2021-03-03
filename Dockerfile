@@ -25,4 +25,4 @@ RUN chmod +x /usr/local/bin/*
 RUN mkdir /root/workspace
 ENV GOPATH '/root/workspace/'
 RUN gem install bundler -v 1.17.3
-RUN pip install aws-adfs
+RUN pip install aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex
