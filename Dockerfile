@@ -1,7 +1,7 @@
 FROM ubuntu:focal
 ENV DEBIAN_FRONTEND "noninteractive"
 ENV ENV TZ=Europe/London
-ENV PACKAGES "zlib1g-dev libssl-dev file awscli unzip curl openssl ca-certificates git jq util-linux gzip bash uuid-runtime coreutils vim tzdata openssh-client gnupg make zip golang rubygems rubygems-integration pwgen python3-pip tree dnsutils build-essential ruby-dev python3-dev libkrb5-dev libmagic-dev tmux iputils-ping"
+ENV PACKAGES "libxslt1-dev libreadline8 libreadline-dev zlib1g-dev libssl-dev file awscli unzip curl openssl ca-certificates git jq util-linux gzip bash uuid-runtime coreutils vim tzdata openssh-client gnupg make zip golang rubygems rubygems-integration pwgen python3-pip tree dnsutils build-essential ruby-dev python3-dev libkrb5-dev libmagic-dev tmux iputils-ping"
 RUN printf "Acquire {\n  HTTP::proxy \"%s\"/;\n  HTTPS::proxy \"%s\"/;\n}\n" ${http_proxy} ${http_proxy} > /etc/apt/apt.conf.d/proxy.conf
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends ${PACKAGES} && apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN ln -s /usr/bin/python3 /usr/bin/python
