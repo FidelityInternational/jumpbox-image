@@ -13,6 +13,7 @@ ENV YQ_VERSION "3.2.1"
 ENV GOVC_VERSION "0.23.0"
 ENV CREDHUB_VERSION "2.8.0"
 ENV TERRAFORM_VERSION "0.14.8"
+ENV YTT_VERSION "0.32.0"
 RUN curl -fL "https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${CREDHUB_VERSION}/credhub-linux-${CREDHUB_VERSION}.tgz" | tar -zx -C /usr/local/bin
 RUN curl -fL "https://s3-us-west-1.amazonaws.com/v7-cf-cli-releases/releases/v${CF_CLI_VERSION}/cf7-cli_${CF_CLI_VERSION}_linux_x86-64.tgz" | tar -zx -C /usr/local/bin
 RUN curl -fL "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64" -o /usr/local/bin/yq
@@ -21,6 +22,7 @@ RUN curl -fL "https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSIO
 RUN curl -fL "https://github.com/vmware/govmomi/releases/download/v${GOVC_VERSION}/govc_linux_amd64.gz" | gunzip > /usr/local/bin/govc
 RUN curl -fL "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" | zcat > /usr/local/bin/terraform
 RUN curl -fL "https://raw.githubusercontent.com/FidelityInternational/fly_wrapper/master/fly" -o /usr/local/bin/fly
+RUN curl -fL "https://github.com/vmware-tanzu/carvel-ytt/releases/download/v${YTT_VERSION}/ytt-linux-amd64" -o /usr/local/bin/ytt
 RUN chmod +x /usr/local/bin/*
 RUN mkdir /root/workspace
 ENV GOPATH '/root/workspace/'
