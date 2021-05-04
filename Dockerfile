@@ -12,7 +12,7 @@ ENV CF_CLI_VERSION "7.2.0"
 ENV YQ_VERSION "3.2.1"
 ENV GOVC_VERSION "0.23.0"
 ENV CREDHUB_VERSION "2.9.0"
-ENV TERRAFORM_VERSION "0.14.8"
+ENV TERRAFORM_VERSION "0.15.1"
 ENV YTT_VERSION "0.32.0"
 RUN curl -fL "https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${CREDHUB_VERSION}/credhub-linux-${CREDHUB_VERSION}.tgz" | tar -zx -C /usr/local/bin
 RUN curl -fL "https://s3-us-west-1.amazonaws.com/v7-cf-cli-releases/releases/v${CF_CLI_VERSION}/cf7-cli_${CF_CLI_VERSION}_linux_x86-64.tgz" | tar -zx -C /usr/local/bin
