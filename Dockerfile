@@ -9,15 +9,16 @@ RUN ln -s /usr/bin/pip3 /usr/bin/pip
 ENV BOSH_VERSION "6.4.1"
 ENV SPRUCE_VERION "1.27.0"
 ENV CF_CLI_VERSION "7.2.0"
-ENV YQ_VERSION "3.2.1"
+ENV YQ3_VERSION "3.2.1"
+ENV YQ4_VERSION "4.9.5"
 ENV GOVC_VERSION "0.23.0"
 ENV CREDHUB_VERSION "2.9.0"
 ENV TERRAFORM_VERSION "0.15.1"
 ENV YTT_VERSION "0.32.0"
 RUN curl -fL "https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${CREDHUB_VERSION}/credhub-linux-${CREDHUB_VERSION}.tgz" | tar -zx -C /usr/local/bin
 RUN curl -fL "https://s3-us-west-1.amazonaws.com/v7-cf-cli-releases/releases/v${CF_CLI_VERSION}/cf7-cli_${CF_CLI_VERSION}_linux_x86-64.tgz" | tar -zx -C /usr/local/bin
-RUN curl -fL "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64" -o /usr/local/bin/yq
-RUN curl -fL "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64" -o /usr/local/bin/yq3
+RUN curl -fL "https://github.com/mikefarah/yq/releases/download/${YQ3_VERSION}/yq_linux_amd64" -o /usr/local/bin/yq3
+RUN curl -fL "https://github.com/mikefarah/yq/releases/download/v${YQ4_VERSION}/yq_linux_amd64" -o /usr/local/bin/yq
 RUN curl -fL "https://github.com/geofffranks/spruce/releases/download/v${SPRUCE_VERION}/spruce-linux-amd64" -o /usr/local/bin/spruce
 RUN curl -fL "https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64" -o /usr/local/bin/bosh
 RUN curl -fL "https://github.com/vmware/govmomi/releases/download/v${GOVC_VERSION}/govc_linux_amd64.gz" | gunzip > /usr/local/bin/govc
