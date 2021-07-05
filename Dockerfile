@@ -22,8 +22,11 @@ RUN curl -fL "https://github.com/vmware/govmomi/releases/download/v${GOVC_VERSIO
 RUN curl -fL "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" | zcat > /usr/local/bin/terraform
 RUN curl -fL "https://raw.githubusercontent.com/FidelityInternational/fly_wrapper/master/fly" -o /usr/local/bin/fly
 RUN curl -fL "https://github.com/vmware-tanzu/carvel-ytt/releases/download/v${YTT_VERSION}/ytt-linux-amd64" -o /usr/local/bin/ytt
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
 RUN chmod +x /usr/local/bin/*
 RUN mkdir /root/workspace
 ENV GOPATH '/root/workspace/'
 RUN gem install bundler -v 1.17.3
 RUN pip install aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex
+RUN pip install --upgrade awscli
