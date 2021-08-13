@@ -28,4 +28,7 @@ RUN chmod +x /usr/local/bin/*
 RUN mkdir /root/workspace
 ENV GOPATH '/root/workspace/'
 RUN gem install bundler -v 1.17.3
-RUN pip install --no-cache-dir aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex awscli
+RUN pip install --no-cache-dir aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex awscli xmltodict "ruyaml>=0.20.0" "sure>=1.4.0" \
+"ruyaml>=0.20.0" "git+https://github.com/FidelityInternational/nsxramlclient.git@master" "mamba>=0.8.6" "pyvmomi>=6.0.0.2016.6" "lxml>=4.3.3" \
+iso8601 pytz "git+https://github.com/FidelityInternational/pyraml-parser.git@master" "passlib==1.7.0" "pytest >= 6.0.1" "pytest-mock >= 3.3.0" \
+"pytest-cov >= 2.10.1" "s3cmd >= 2.1.0" "python-magic >= 0.4.18"
