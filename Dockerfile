@@ -28,4 +28,6 @@ RUN chmod +x /usr/local/bin/*
 RUN mkdir /root/workspace
 ENV GOPATH '/root/workspace/'
 RUN gem install bundler -v 1.17.3
+RUN gem install 'webmock:~>3.5.1' 'vcr~>6.0.0' rspec os highline
 RUN pip install --no-cache-dir aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex awscli
+
