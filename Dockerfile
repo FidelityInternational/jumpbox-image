@@ -87,7 +87,7 @@ RUN git clone https://github.com/pyenv/pyenv.git /root/.pyenv \
 ENV BOSH_VERSION="7.0.1" \
   SPRUCE_VERION="1.27.0" \
   CF_CLI_7_VERSION="7.5.0" \
-  CF_CLI_8_VERSION="8.4.0" \
+  CF_CLI_8_VERSION="8.5.0" \
   YQ4_VERSION="4.9.6" \
   GOVC_VERSION="0.28.0" \
   CREDHUB_VERSION="2.9.3" \
