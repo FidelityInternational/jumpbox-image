@@ -98,8 +98,8 @@ ENV BOSH_VERSION="7.0.1" \
   BBR_VERSION="1.9.35"
 RUN curl -fL "https://github.com/rebuy-de/aws-nuke/releases/download/v${AWS_NUKE_VERSION}/aws-nuke-v${AWS_NUKE_VERSION}-linux-amd64.tar.gz" | tar -xz --transform=s/-v"${AWS_NUKE_VERSION}"-linux-amd64// -C /usr/local/bin \
   && curl -fL "https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${CREDHUB_VERSION}/credhub-linux-${CREDHUB_VERSION}.tgz" | tar -zx -C /usr/local/bin \
-  && curl -fL "https://s3-us-west-1.amazonaws.com/v7-cf-cli-releases/releases/v${CF_CLI_7_VERSION}/cf7-cli_${CF_CLI_7_VERSION}_linux_x86-64.tgz" | tar -zx -C /usr/local/bin \
-  && curl -fL "https://s3-us-west-1.amazonaws.com/v8-cf-cli-releases/releases/v${CF_CLI_8_VERSION}/cf8-cli_${CF_CLI_8_VERSION}_linux_x86-64.tgz" | tar -zx -C /usr/local/bin cf8 \
+  && curl -fL "https://s3-us-west-1.amazonaws.com/v7-cf-cli-releases/releases/v${CF_CLI_7_VERSION}/cf7-cli_${CF_CLI_7_VERSION}_linux_x86-64.tgz" | tar -zx -C /usr/local/bin cf7 \
+  && curl -fL "https://s3-us-west-1.amazonaws.com/v8-cf-cli-releases/releases/v${CF_CLI_8_VERSION}/cf8-cli_${CF_CLI_8_VERSION}_linux_x86-64.tgz" | tar -zx -C /usr/local/bin cf \
   && curl -fL "https://github.com/mikefarah/yq/releases/download/v${YQ4_VERSION}/yq_linux_amd64" -o /usr/local/bin/yq \
   && curl -fL "https://github.com/geofffranks/spruce/releases/download/v${SPRUCE_VERION}/spruce-linux-amd64" -o /usr/local/bin/spruce \
   && curl -fL "https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64" -o /usr/local/bin/bosh \
