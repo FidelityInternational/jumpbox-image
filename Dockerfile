@@ -148,6 +148,7 @@ RUN aws --version \
   && bosh -v \
   && bundler -v \
   && cf -v \
+  && cf7 -v \
   && cf8 -v \
   && credhub --version \
   && curl --version \
