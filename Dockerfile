@@ -56,7 +56,7 @@ RUN apt update && apt upgrade -y && apt install -y --no-install-recommends \
 
 # Languages
 # GOLANG
-ENV GOLANG_VERSION="1.18"
+ENV GOLANG_VERSION="1.19"
 ENV GOPATH='/root/workspace/'
 ENV PATH="/usr/lib/go-${GOLANG_VERSION}/bin:${GOPATH}/bin:${PATH}"
 RUN add-apt-repository ppa:longsleep/golang-backports \
