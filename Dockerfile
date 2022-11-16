@@ -141,6 +141,12 @@ RUN pip install -U setuptools && pip install --no-cache-dir \
   sure>=1.4.0 \
   xmltodict
 
+# AWS Session Manager plugin for the AWS CLI
+# https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
+RUN curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb" \
+  && dpkg -i session-manager-plugin.deb \
+  && rm -f session-manager-plugin.deb
+
 # smoke test expected cli tools to ensure they are in the path and executable
 RUN aws --version \
   && aws-nuke version \
@@ -166,4 +172,5 @@ RUN aws --version \
   && terraform -v \
   && terrascan version \
   && yq -V \
-  && ytt --version
+  && ytt --version \
+  && session-manager-plugin --version
