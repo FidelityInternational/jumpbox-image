@@ -54,6 +54,7 @@ RUN apt update && apt upgrade -y && apt install -y --no-install-recommends \
   zlibc \
   lsb-release \
   libarchive-tools \
+  && cp /usr/bin/bsdtar /usr/bin/tar \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Languages
@@ -184,5 +185,5 @@ RUN aws --version \
   && yq -V \
   && ytt --version \
   && session-manager-plugin --version \
-  && bsdtar --version \
+  && tar --version | grep bsd \
   && docker version || echo "Docker Client only"
