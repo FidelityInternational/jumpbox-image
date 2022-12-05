@@ -86,6 +86,11 @@ RUN git clone https://github.com/pyenv/pyenv.git /root/.pyenv \
   && pyenv install ${PYTHON_VERSION} \
   && pyenv global ${PYTHON_VERSION}
 
+# NODE
+ENV NODE_VERSION="16.18.1" \
+  PATH="/usr/local/node/bin:${PATH}"
+RUN mkdir /usr/local/node && curl -fL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" | tar -xJf - --strip-components=1 -C /usr/local/node
+
 # Docker (cli only)
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  \
   && add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
@@ -185,4 +190,5 @@ RUN aws --version \
   && ytt --version \
   && session-manager-plugin --version \
   && bsdtar --version \
-  && docker version || echo "Docker Client only"
+  && docker version || echo "Docker Client only" \
+  && node --version | grep 16
