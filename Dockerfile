@@ -52,7 +52,9 @@ RUN apt update && apt upgrade -y && apt install -y --no-install-recommends \
   zip \
   zlib1g-dev \
   zlibc \
-  && apt clean && rm -rf /var/lib/apt/lists/*
+  lsb-release \
+  libarchive-tools \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Languages
 # GOLANG
@@ -61,7 +63,8 @@ ENV GOPATH='/root/workspace/'
 ENV PATH="/usr/lib/go-${GOLANG_VERSION}/bin:${GOPATH}/bin:${PATH}"
 RUN add-apt-repository ppa:longsleep/golang-backports \
   && apt update \
-  && apt install -y golang-${GOLANG_VERSION}
+  && apt install -y golang-${GOLANG_VERSION} \
+  && apt clean && rm -rf /var/lib/apt/lists/*
 
 # RUBY
 ENV RUBY_VERSION="3.1.2" \
@@ -82,6 +85,13 @@ RUN git clone https://github.com/pyenv/pyenv.git /root/.pyenv \
   && echo 'eval "$(pyenv init -)"' >> ~/.bashrc \
   && pyenv install ${PYTHON_VERSION} \
   && pyenv global ${PYTHON_VERSION}
+
+# Docker (cli only)
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  \
+  && add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+  && apt update \
+  && apt install -y docker-ce-cli \
+  && apt clean && rm -rf /var/lib/apt/lists/*
 
 # Other CLI tools
 ENV BOSH_VERSION="7.0.1" \
@@ -173,4 +183,6 @@ RUN aws --version \
   && terrascan version \
   && yq -V \
   && ytt --version \
-  && session-manager-plugin --version
+  && session-manager-plugin --version \
+  && bsdtar --version \
+  && docker version || echo "Docker Client only"
