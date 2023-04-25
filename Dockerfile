@@ -192,3 +192,6 @@ RUN aws --version \
   && bsdtar --version \
   && docker version || echo "Docker Client only" \
   && node --version | grep 16
+
+# install golang libaries
+RUN go install github.com/FidelityInternational/stopover@v1.0.2
