@@ -111,11 +111,8 @@ ENV BOSH_VERSION="7.2.3" \
   CREDHUB_VERSION="2.9.16" \
   TERRAFORM_VERSION="1.4.6" \
   YTT_VERSION="0.32.0" \
-  AWS_NUKE_VERSION="2.22.1" \
-  TERRASCAN_VERSION="1.18.1" \
   BBR_VERSION="1.9.38"
-RUN curl -fL "https://github.com/rebuy-de/aws-nuke/releases/download/v${AWS_NUKE_VERSION}/aws-nuke-v${AWS_NUKE_VERSION}-linux-amd64.tar.gz" | tar -xz --transform=s/-v"${AWS_NUKE_VERSION}"-linux-amd64// -C /usr/local/bin \
-  && curl -fL "https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${CREDHUB_VERSION}/credhub-linux-${CREDHUB_VERSION}.tgz" | tar -zx -C /usr/local/bin \
+RUN curl -fL "https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${CREDHUB_VERSION}/credhub-linux-${CREDHUB_VERSION}.tgz" | tar -zx -C /usr/local/bin \
   && curl -fL "https://s3-us-west-1.amazonaws.com/v7-cf-cli-releases/releases/v${CF_CLI_7_VERSION}/cf7-cli_${CF_CLI_7_VERSION}_linux_x86-64.tgz" | tar -zx -C /usr/local/bin cf7 \
   && curl -fL "https://s3-us-west-1.amazonaws.com/v8-cf-cli-releases/releases/v${CF_CLI_8_VERSION}/cf8-cli_${CF_CLI_8_VERSION}_linux_x86-64.tgz" | tar -zx -C /usr/local/bin \
   && curl -fL "https://github.com/mikefarah/yq/releases/download/v${YQ4_VERSION}/yq_linux_amd64" -o /usr/local/bin/yq \
@@ -125,7 +122,6 @@ RUN curl -fL "https://github.com/rebuy-de/aws-nuke/releases/download/v${AWS_NUKE
   && curl -fL "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" | zcat > /usr/local/bin/terraform \
   && curl -fL "https://raw.githubusercontent.com/FidelityInternational/fly_wrapper/master/fly" -o /usr/local/bin/fly \
   && curl -fL "https://github.com/vmware-tanzu/carvel-ytt/releases/download/v${YTT_VERSION}/ytt-linux-amd64" -o /usr/local/bin/ytt \
-  && curl -fL "https://github.com/tenable/terrascan/releases/download/v${TERRASCAN_VERSION}/terrascan_${TERRASCAN_VERSION}_Linux_x86_64.tar.gz" | tar -zx -C /usr/local/bin \
   && curl -fL "https://github.com/cloudfoundry/bosh-backup-and-restore/releases/download/v${BBR_VERSION}/bbr-${BBR_VERSION}-linux-amd64" -o /usr/local/bin/bbr
 
 RUN chmod +x /usr/local/bin/*
@@ -169,7 +165,6 @@ RUN curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubunt
 
 # smoke test expected cli tools to ensure they are in the path and executable
 RUN aws --version \
-  && aws-nuke version \
   && bbr --version \
   && bosh -v \
   && bundler -v \
@@ -190,7 +185,6 @@ RUN aws --version \
   && ruby -v \
   && spruce -v \
   && terraform -v \
-  && terrascan version \
   && yq -V \
   && ytt --version \
   && session-manager-plugin --version \
