@@ -22,8 +22,10 @@ RUN apt update && apt upgrade -y && apt install -y --no-install-recommends \
   gzip \
   iputils-ping \
   jq \
+  libbz2-dev \
   libffi-dev \
   libkrb5-dev \
+  liblzma-dev \
   libmagic-dev \
   libreadline-dev \
   libreadline8 \
@@ -32,6 +34,7 @@ RUN apt update && apt upgrade -y && apt install -y --no-install-recommends \
   libxml2-dev \
   libxslt1-dev \
   libyaml-dev \
+  lzma \
   make \
   netcat \
   openssh-client \
@@ -130,6 +133,7 @@ RUN mkdir /root/workspace
 
 # Python dependencies
 # setuptools needs to be installed separately as a prerequisite for installing other packages
+RUN pip install --upgrade pip
 RUN pip install -U setuptools && pip install --no-cache-dir \
   aws-adfs \
   awscli \
