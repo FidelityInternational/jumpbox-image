@@ -102,17 +102,17 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  \
   && apt clean && rm -rf /var/lib/apt/lists/*
 
 # Other CLI tools
-ENV BOSH_VERSION="7.0.1" \
+ENV BOSH_VERSION="7.2.3" \
   SPRUCE_VERION="1.27.0" \
   CF_CLI_7_VERSION="7.5.0" \
   CF_CLI_8_VERSION="8.5.0" \
   YQ4_VERSION="4.26.1" \
   GOVC_VERSION="0.28.0" \
-  CREDHUB_VERSION="2.9.3" \
-  TERRAFORM_VERSION="1.3.2" \
+  CREDHUB_VERSION="2.9.16" \
+  TERRAFORM_VERSION="1.4.6" \
   YTT_VERSION="0.32.0" \
-  AWS_NUKE_VERSION="2.19.0" \
-  TERRASCAN_VERSION="1.15.2" \
+  AWS_NUKE_VERSION="2.22.1" \
+  TERRASCAN_VERSION="1.18.1" \
   BBR_VERSION="1.9.38"
 RUN curl -fL "https://github.com/rebuy-de/aws-nuke/releases/download/v${AWS_NUKE_VERSION}/aws-nuke-v${AWS_NUKE_VERSION}-linux-amd64.tar.gz" | tar -xz --transform=s/-v"${AWS_NUKE_VERSION}"-linux-amd64// -C /usr/local/bin \
   && curl -fL "https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${CREDHUB_VERSION}/credhub-linux-${CREDHUB_VERSION}.tgz" | tar -zx -C /usr/local/bin \
@@ -141,24 +141,25 @@ RUN pip install -U setuptools && pip install --no-cache-dir \
   git+https://github.com/FidelityInternational/nsxramlclient.git@master \
   git+https://github.com/FidelityInternational/pyraml-parser.git@master \
   iso8601 \
-  lxml>=4.3.3 \
-  mamba>=0.8.6 \
-  passlib==1.7.0 \
+  'lxml>=4.3.3' \
+  'mamba>=0.8.6' \
+  'passlib==1.7.0' \
   PyJWT \
-  pytest-cov>=2.10.1 \
-  pytest-mock>=3.3.0 \
-  pytest>=6.0.1 \
-  python-magic>=0.4.18 \
+  'pytest-cov>=2.10.1' \
+  'pytest-mock>=3.3.0' \
+  'pytest>=6.0.1' \
+  'python-magic>=0.4.18' \
   pytz \
-  pyvmomi>=6.0.0.2016.6 \
+  'pyvmomi>=6.0.0.2016.6' \
   pyyaml \
   regex \
   requests \
   ruamel.yaml \
-  ruyaml>=0.20.0 \
-  s3cmd>=2.1.0 \
-  sure>=1.4.0 \
+  'ruyaml>=0.20.0' \
+  's3cmd>=2.1.0' \
+  'sure>=1.4.0' \
   xmltodict
+
 
 # AWS Session Manager plugin for the AWS CLI
 # https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
